@@ -1,0 +1,9 @@
+const express = require('express');
+const router = express.Router();
+
+//@router GET api/profile/test
+//@desc Tetst profile route
+//@access Public
+router.get('/test', (req, res) => res.json({ msg: 'profile works' }));
+
+module.exports = router;
