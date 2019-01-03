@@ -1,11 +1,12 @@
 {
   "name": "devconnector",
   "version": "1.0.0",
-  "description": "MERN projects (social network)",
+  "description": "MERN project (social network)",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "server": "nodemon servre.js"
+    "nodemon": "nodemon server.js",
+    "start": "nodemon server.js",
+    "bind": "node server.js"
   },
   "author": "Dmitry Chernenkov",
   "license": "MIT",
