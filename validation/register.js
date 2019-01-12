@@ -26,16 +26,24 @@ module.exports = function validateRegisterInput(data) {
     errors.email = 'Invalid email';
   }
 
-  if (Validator.isEmpty(data.password)) {
-    errors.password = 'Password field is required';
-  }
-
   if (!Validator.isLength(data.password, { min: 6, max: 30 })) {
     errors.password = 'Password must be at least 6';
   }
 
+  if (Validator.isEmpty(data.password)) {
+    errors.password = 'Password field is required';
+  }
+
+  if (!Validator.isLength(data.password2, { min: 6, max: 30 })) {
+    errors.password2 = 'Password must be at least 6';
+  }
+
   if (!Validator.equals(data.password, data.password2)) {
     errors.password2 = 'Passwords not match';
+  }
+
+  if (Validator.isEmpty(data.password2)) {
+    errors.password2 = 'Password field is required';
   }
 
   if (Validator)
