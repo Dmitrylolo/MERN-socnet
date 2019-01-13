@@ -1,4 +1,6 @@
-import { REGISTER_USER } from '../actions/types';
+import isEmpty from '../validation/is-empty';
+
+import { SET_CURRRENT_USER } from '../actions/types';
 
 const initialState = {
   isAuthenticated: false,
@@ -7,10 +9,10 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case REGISTER_USER:
+    case SET_CURRRENT_USER:
       return {
         ...state,
-        isAuthenticated: true,
+        isAuthenticated: !isEmpty(action.payload),
         user: action.payload
       };
     default:
