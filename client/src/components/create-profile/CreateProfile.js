@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+
+import { createProfile } from '../../actions/profileActions';
 
 import TextFieldGroup from '../common/TextFieldGroup';
 import TextAreaFieldGroup from '../common/TextAreaFieldGroup';
@@ -31,10 +34,46 @@ class CreateProfile extends Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.renderSocialInputs = this.renderSocialInputs.bind(this);
   }
-  componentWillReceiveProps(nextProps) {}
+  componentWillReceiveProps(nextProps) {
+    const { errors } = nextProps;
+    if (errors) {
+      this.setState({ errors });
+    }
+  }
   onSubmit(e) {
     e.preventDefault();
-    console.log('submit');
+    const {
+      handle,
+      company,
+      website,
+      location,
+      status,
+      skills,
+      githubusername,
+      bio,
+      twitter,
+      facebook,
+      linkedin,
+      youtube,
+      instagram
+    } = this.state;
+
+    const profileData = {
+      handle,
+      company,
+      website,
+      location,
+      status,
+      skills,
+      githubusername,
+      bio,
+      twitter,
+      facebook,
+      linkedin,
+      youtube,
+      instagram
+    };
+    this.props.createProfile(profileData, this.props.history);
   }
 
   onChange(e) {
@@ -203,6 +242,7 @@ class CreateProfile extends Component {
 
                 <div className="mb-3">
                   <button
+                    type="button"
                     className="btn btn-light"
                     onClick={() =>
                       this.setState(prevState => ({
@@ -238,5 +278,5 @@ const mapStateToProps = ({ profile, errors }) => ({ profile, errors });
 
 export default connect(
   mapStateToProps,
-  null
-)(CreateProfile);
+  { createProfile }
+)(withRouter(CreateProfile));
