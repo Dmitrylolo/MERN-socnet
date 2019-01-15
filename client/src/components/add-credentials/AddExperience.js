@@ -59,7 +59,6 @@ class AddExperience extends Component {
     };
 
     this.props.addExperience(newExperience, this.props.history);
-    console.log('sbumt', newExperience);
   }
 
   render() {
