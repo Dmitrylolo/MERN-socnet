@@ -94,6 +94,44 @@ export const deleteAccount = () => dispatch => {
   }
 };
 
+export const deleteExperience = id => dispatch => {
+  if (window.confirm('Are you sure? This can Not be undone!')) {
+    axios
+      .delete(`/api/profile/experience/${id}`)
+      .then(res =>
+        dispatch({
+          type: GET_PROFILE,
+          payload: res.data
+        })
+      )
+      .catch(err =>
+        dispatch({
+          type: GET_ERRORS,
+          payload: err.response.data
+        })
+      );
+  }
+};
+
+export const deleteEducation = id => dispatch => {
+  if (window.confirm('Are you sure? This can Not be undone!')) {
+    axios
+      .delete(`/api/profile/education/${id}`)
+      .then(res =>
+        dispatch({
+          type: GET_PROFILE,
+          payload: res.data
+        })
+      )
+      .catch(err =>
+        dispatch({
+          type: GET_ERRORS,
+          payload: err.response.data
+        })
+      );
+  }
+};
+
 // Profile loading
 export const setProfileLoading = () => ({
   type: PROFILE_LOADING
