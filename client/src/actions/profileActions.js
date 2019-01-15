@@ -94,6 +94,7 @@ export const deleteAccount = () => dispatch => {
   }
 };
 
+// Delete experience
 export const deleteExperience = id => dispatch => {
   if (window.confirm('Are you sure? This can Not be undone!')) {
     axios
@@ -113,6 +114,7 @@ export const deleteExperience = id => dispatch => {
   }
 };
 
+// Delete experience
 export const deleteEducation = id => dispatch => {
   if (window.confirm('Are you sure? This can Not be undone!')) {
     axios
