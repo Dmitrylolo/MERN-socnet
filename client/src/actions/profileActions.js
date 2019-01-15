@@ -6,7 +6,8 @@ import {
   NO_ERRORS,
   CLEAR_CURRENT_PROFILE,
   GET_ERRORS,
-  SET_CURRRENT_USER
+  SET_CURRRENT_USER,
+  GET_PROFILES
 } from './types';
 
 // Get profile
@@ -46,8 +47,27 @@ export const createProfile = (profileData, history) => dispatch => {
     );
 };
 
-// Add experience
+// Get profiles
+export const getProfiles = () => dispatch => {
+  dispatch(setProfileLoading());
+  axios
+    .get('/api/profile/all')
+    .then(res => {
+      console.log(res.data);
+      dispatch({
+        type: GET_PROFILES,
+        payload: res.data
+      });
+    })
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
 
+// Add experience
 export const addExperience = (experience, history) => dispatch => {
   axios
     .post('api/profile/experience', experience)

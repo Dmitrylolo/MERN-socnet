@@ -47,7 +47,7 @@ class EditProfile extends Component {
     }
 
     if (profile) {
-      const skillsCSV = profile.skills.join(',');
+      const skillsCSV = profile.skills ? profile.skills.join(',') : '';
       // If profile not exists, make empty
       profile.handle = !isEmpty(profile.handle) ? profile.handle : '';
       profile.company = !isEmpty(profile.company) ? profile.company : '';
