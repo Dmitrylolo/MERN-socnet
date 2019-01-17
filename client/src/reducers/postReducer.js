@@ -17,7 +17,7 @@ export default function(state = initialState, action) {
     case POST_LOADING:
       return {
         ...state,
-        loading: true
+        loading: false
       };
     case ADD_POST:
       return {
@@ -36,6 +36,12 @@ export default function(state = initialState, action) {
         ...state,
         loading: false,
         posts: action.payload
+      };
+    case DELETE_POST:
+      return {
+        ...state,
+        loading: false,
+        posts: state.posts.filter(post => post._id !== action.payload)
       };
     default:
       return state;
