@@ -2,6 +2,65 @@ import React, { Component } from 'react';
 import isEmpty from '../../validation/is-empty';
 
 class ProfileHeader extends Component {
+  renderSocialLinks = () => {
+    const { social } = this.props.profile;
+    if (social) {
+      return (
+        <div>
+          {!isEmpty(social.twitter) && (
+            <a
+              className="text-white p-2"
+              href={social.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-twitter fa-2x" />
+            </a>
+          )}
+          {!isEmpty(social.facebook) && (
+            <a
+              className="text-white p-2"
+              href={social.facebook}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-facebook fa-2x" />
+            </a>
+          )}
+          {!isEmpty(social.linkedin) && (
+            <a
+              className="text-white p-2"
+              href={social.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-linkedin fa-2x" />
+            </a>
+          )}
+          {!isEmpty(social.instagram) && (
+            <a
+              className="text-white p-2"
+              href={social.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-instagram fa-2x" />
+            </a>
+          )}
+          {!isEmpty(social.youtube) && (
+            <a
+              className="text-white p-2"
+              href={social.youtube}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-youtube fa-2x" />
+            </a>
+          )}
+        </div>
+      );
+    }
+  };
   render() {
     const { profile } = this.props;
 
@@ -33,56 +92,7 @@ class ProfileHeader extends Component {
                     <i className="fas fa-globe fa-2x" />
                   </a>
                 )}
-                {!isEmpty(profile.social.twitter) && (
-                  <a
-                    className="text-white p-2"
-                    href={profile.social.twitter}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fab fa-twitter fa-2x" />
-                  </a>
-                )}
-                {!isEmpty(profile.social.facebook) && (
-                  <a
-                    className="text-white p-2"
-                    href={profile.social.facebook}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fab fa-facebook fa-2x" />
-                  </a>
-                )}
-                {!isEmpty(profile.social.linkedin) && (
-                  <a
-                    className="text-white p-2"
-                    href={profile.social.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fab fa-linkedin fa-2x" />
-                  </a>
-                )}
-                {!isEmpty(profile.social.instagram) && (
-                  <a
-                    className="text-white p-2"
-                    href={profile.social.instagram}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fab fa-instagram fa-2x" />
-                  </a>
-                )}
-                {!isEmpty(profile.social.youtube) && (
-                  <a
-                    className="text-white p-2"
-                    href={profile.social.youtube}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <i className="fab fa-youtube fa-2x" />
-                  </a>
-                )}
+                {this.renderSocialLinks()}
               </p>
             </div>
           </div>
