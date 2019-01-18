@@ -7,6 +7,8 @@ import { getPost } from '../../actions/postActions';
 
 import Spinner from '../common/Spinner';
 import PostItem from '../posts/PostItem';
+import CommentForm from './CommentForm';
+import CommentFeed from './CommentFeed';
 
 class Post extends Component {
   componentDidMount = () => {
@@ -27,6 +29,7 @@ class Post extends Component {
   };
 
   render() {
+    const { post } = this.props.post;
     return (
       <div className="post">
         <div className="container">
@@ -36,6 +39,10 @@ class Post extends Component {
                 Back to Feed
               </Link>
               {this.renderPost()}
+              {post._id && <CommentForm postId={post._id} />}
+              {post._id && (
+                <CommentFeed postId={post._id} comments={post.comments} />
+              )}
             </div>
           </div>
         </div>
